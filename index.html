@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./src/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Password Generator</title>
+  </head>
+  <body>
+    <script src="src/main.ts" type="module"></script>
+    <div class="flex justify-center items-center h-screen">
+      <div class="h-100 w-auto">
+        <h1 class="text-2xl">Simple Password Generator</h1>
+        
+        <input type="number" placeholder="Length" id="length" class="border-gray-400 border-2 p-1 rounded-2xl mr-1">
+        <button type="button" id="generateButton" class="bg-gray-300 p-2 rounded-full cursor-pointer">
+          Generate
+        </button> 
+        <br>
+        <input type="text" readonly id="generatedPassword" class="font-mono w-105">
+      </div>
+    </div>
+  </body>
+</html>
