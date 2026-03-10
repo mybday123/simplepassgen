@@ -10,19 +10,19 @@ Project ini dibuat sebagai bagian dari tugas **GSLC DevOps**.
 
 Clone repository dari GitHub:
 
-```t
+```text
 git clone https://github.com/mybday123/simplepassgen.git
 ```
 
 Masuk ke folder project:
 
-```t
+```text
 cd simplepassgen
 ```
 
 Install dependencies:
 
-```t
+```text
 npm install
 ```
 
@@ -32,13 +32,13 @@ npm install
 
 Untuk menjalankan project dalam mode development:
 
-```t
+```text
 npm run dev
 ```
 
 Buka browser dan akses:
 
-```t
+```text
 http://localhost:5173
 ```
 
@@ -48,19 +48,19 @@ http://localhost:5173
 
 Untuk membuat versi production:
 
-```
+```text
 npm run build
 ```
 
 Hasil build akan berada di folder:
 
-```
+```text
 dist/
 ```
 
 ---
 
-# Menjalankan Project Menggunakan Docker
+## Menjalankan Project Menggunakan Docker
 
 Project ini menggunakan **multi-stage Docker build** untuk:
 
@@ -69,54 +69,24 @@ Project ini menggunakan **multi-stage Docker build** untuk:
 
 ### Build Docker Image
 
-```
+```text
 docker build -t simplepassgen .
 ```
 
 ### Menjalankan Container
 
-```
+```text
 docker run -p 8000:80 simplepassgen
 ```
 
 Setelah container berjalan, buka browser:
 
-```
+```text
 http://localhost:8000
 ```
 
 ---
 
-# Workflow Docker
-
-Proses deployment menggunakan Docker:
-
-```
-Source Code
-   ↓
-Docker Build
-   ↓
-Docker Image
-   ↓
-Docker Container
-   ↓
-Website Running
-```
-
----
-
-# Collaboration
-
-Project ini menggunakan sistem kolaborasi **GitHub** dengan workflow:
-
-1. Fork atau clone repository
-2. Membuat branch baru
-3. Melakukan perubahan kode
-4. Mengirim Pull Request
-
----
-
-# Author
+## Author
 
 Kelompok GSLC
-
