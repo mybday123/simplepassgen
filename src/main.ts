@@ -4,7 +4,7 @@ import rollDice from "./dice"
 function makePassword(): void {
     const lengthInput = document.getElementById("length") as HTMLInputElement
     const displayInput = document.getElementById("generatedPassword") as HTMLInputElement
-    
+
     const len: number = lengthInput ? parseInt(lengthInput.value) : 0
     let pass: string = ""
 
@@ -15,7 +15,7 @@ function makePassword(): void {
 
     for (let i = 0; i < len; i++) {
         let char: string | undefined = "\0"
-        
+
         while (!char || char === "\0" || char === " ") {
             const table = (rollDice() % 2) + 1
             const row = rollDice()
