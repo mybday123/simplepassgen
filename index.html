@@ -14,18 +14,18 @@
     <div class="flex justify-center items-center h-screen">
         <fieldset class="h-100 w-auto border-2 p-4 rounded bg-gray-100">
             <legend>Simple Password Generator</legend>
-            <input type="range" min="5" max="64" value="14" id="length"
-                class="border-gray-400 border-2 p-1 rounded-2xl mr-1 w-65" />
+            <span class="mr-4">Password length:</span>
+            <input type="number" min="6" max="128" value="14" id="length" class="border bg-white rounded pl-1" />
             <br />
-            <fieldset class="border-2 border-gray-300 p-2 rounded">
-                <legend>Generated password</legend>
+            <fieldset class="border border-gray-400 p-2 rounded">
+                <legend>Generated password:</legend>
                 <input type="text" readonly id="generatedPassword"
                     class="font-mono w-105 border rounded bg-white pl-1 pr-1 box-content" />
             </fieldset>
             <p>Length: <span id="lengthOutput"></span></p>
-            <button type="button" id="generateButton" class="bg-gray-300 p-2 rounded cursor-pointer">
-                Generate
-            </button>
+            <button type="button" id="generateButton"
+                class="bg-gray-50 p-1 hover:bg-gray-200 rounded cursor-pointer border border-gray-400 active:bg-gray-300 drop-shadow-sm hover:drop-shadow-none">Generate
+                password</button>
         </fieldset>
     </div>
 </body>
