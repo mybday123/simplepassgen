@@ -11,8 +11,53 @@
     <script src="src/main.ts" type="module"></script>
     <script src="src/slider.ts" type="module"></script>
     <div class="flex justify-center items-center h-screen">
-      <fieldset class="h-100 w-auto border-2 p-4 rounded bg-gray-100">
+      <fieldset class="h-auto w-auto border-2 p-4 rounded bg-gray-100">
         <legend>Simple Password Generator</legend>
+        <fieldset class="border border-gray-400 rounded p-2 mb-2">
+          <legend>Character set</legend>
+          <div class="grid grid-rows-2 grid-flow-col">
+            <div>
+              <input type="checkbox" id="useUpper" name="uppercase" />
+              <label for="uppercase">Uppercase (A-Z)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="useLower" name="lowecase" />
+              <label for="lowercase">Lowercase (a-z)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="useNum" name="numbers" />
+              <label for="numbers">Numbers (0-9)</label>
+            </div>
+            <div>
+              <input type="checkbox" id="useSpecial" name="special" />
+              <label for="special">Special characters (!@#$%^&*)</label>
+            </div>
+          </div>
+        </fieldset>
+        <div class="grid grid-cols-2 grid-rows-1 gap-2 mb-2">
+          <fieldset class="border border-gray-400 rounded p-2">
+            <legend>Minimum numbers</legend>
+            <input
+              type="number"
+              id="minNum"
+              min="0"
+              max="120"
+              value="3"
+              class="border bg-white rounded pl-1"
+            />
+          </fieldset>
+          <fieldset class="border border-gray-400 rounded p-2">
+            <legend>Minimum specials</legend>
+            <input
+              type="number"
+              id="minSpecial"
+              min="0"
+              max="120"
+              value="3"
+              class="border bg-white rounded pl-1 w-auto"
+            />
+          </fieldset>
+        </div>
         <span class="mr-4">Password length:</span>
         <input
           type="number"
@@ -23,7 +68,7 @@
           class="border bg-white rounded pl-1"
         />
         <br />
-        <fieldset class="border border-gray-400 p-2 rounded">
+        <fieldset class="border border-gray-400 p-2 rounded mt-2">
           <legend>Generated password:</legend>
           <input
             type="text"
