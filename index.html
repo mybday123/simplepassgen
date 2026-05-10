@@ -77,14 +77,22 @@
             class="font-mono w-105 border rounded bg-white pl-1 pr-1 box-content"
           />
         </fieldset>
-        <p>Length: <span id="lengthOutput"></span></p>
-        <button
-          type="button"
-          id="generateButton"
-          class="bg-gray-50 p-1 hover:bg-gray-200 rounded cursor-pointer border border-gray-400 active:bg-gray-300 drop-shadow-sm hover:drop-shadow-none"
-        >
-          Generate password
-        </button>
+        <div class="flex place-content-between">
+          <button
+            type="button"
+            id="generateButton"
+            class="bg-gray-50 p-1 hover:bg-gray-200 rounded border border-gray-400 active:bg-gray-300 drop-shadow-sm hover:drop-shadow-none"
+          >
+            Generate password
+          </button>
+          <button
+            type="button"
+            id="copyButton"
+            class="bg-gray-50 p-1 hover:bg-gray-200 rounded border border-gray-400 active:bg-gray-300 drop-shadow-sm hover:drop-shadow-none"
+          >
+            Copy
+          </button>
+        </div>
       </fieldset>
     </div>
   </body>
