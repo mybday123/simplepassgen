@@ -39,6 +39,14 @@ function shuffle<T>(items: T[]): T[] {
     return shuffled
 }
 
+function countMatches(value: string, chars: string): number {
+    return Array.from(value).reduce((count, character) => count + (chars.includes(character) ? 1 : 0), 0)
+}
+
+function isPasswordValid(password: string, pools: CharsetPool[]): boolean {
+    return pools.every((pool) => !pool.enabled || countMatches(password, pool.chars) >= pool.min)
+}
+
 function makePassword(): void {
     const lengthInput = document.getElementById("length") as HTMLInputElement
     const displayInput = document.getElementById("generatedPassword") as HTMLInputElement
@@ -84,12 +92,22 @@ function makePassword(): void {
 
     const availableChars = activePools.map((pool) => pool.chars).join("")
     const remainingLength = len - requiredLength
-    const passwordChars = [
-        ...requiredChars,
-        ...Array.from({ length: remainingLength }, () => pickRandomChar(availableChars))
-    ]
+    const maxAttempts = 100
 
-    updateDisplay(displayInput, shuffle(passwordChars).join(""))
+    for (let attempt = 0; attempt < maxAttempts; attempt++) {
+        const passwordChars = [
+            ...requiredChars,
+            ...Array.from({ length: remainingLength }, () => pickRandomChar(availableChars))
+        ]
+        const password = shuffle(passwordChars).join("")
+
+        if (isPasswordValid(password, activePools)) {
+            updateDisplay(displayInput, password)
+            return
+        }
+    }
+
+    updateDisplay(displayInput, "Unable to validate password")
 }
 
 const updateDisplay = (display: HTMLInputElement, value: string) => {
