@@ -47,6 +47,21 @@ function isPasswordValid(password: string, pools: CharsetPool[]): boolean {
     return pools.every((pool) => !pool.enabled || countMatches(password, pool.chars) >= pool.min)
 }
 
+function syncMinimumFields(): void {
+    const useNum = document.getElementById("useNum") as HTMLInputElement | null
+    const useSpecial = document.getElementById("useSpecial") as HTMLInputElement | null
+    const minNum = document.getElementById("minNum") as HTMLInputElement | null
+    const minSpecial = document.getElementById("minSpecial") as HTMLInputElement | null
+
+    if (minNum) {
+        minNum.disabled = !useNum?.checked
+    }
+
+    if (minSpecial) {
+        minSpecial.disabled = !useSpecial?.checked
+    }
+}
+
 function makePassword(): void {
     const lengthInput = document.getElementById("length") as HTMLInputElement
     const displayInput = document.getElementById("generatedPassword") as HTMLInputElement
@@ -116,3 +131,8 @@ const updateDisplay = (display: HTMLInputElement, value: string) => {
 
 const btn = document.getElementById("generateButton")
 btn?.addEventListener("click", makePassword)
+
+document.getElementById("useNum")?.addEventListener("change", syncMinimumFields)
+document.getElementById("useSpecial")?.addEventListener("change", syncMinimumFields)
+
+syncMinimumFields()
