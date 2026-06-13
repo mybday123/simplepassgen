@@ -37,6 +37,10 @@ jobs:
       - name: Run Linter
         run: npx eslint .
 
+      # Dependency Audit
+      - name: Audit Dependencies
+        run: npm audit --audit-level=high
+
       - name: Test
         run: npm run test
 
