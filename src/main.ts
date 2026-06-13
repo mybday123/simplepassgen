@@ -1,4 +1,4 @@
-interface CharsetPool {
+export interface CharsetPool {
     enabled: boolean
     chars: string
     min: number
@@ -11,22 +11,22 @@ const charsets = {
     special: "!@#$%^&*"
 } as const
 
-function parseNumberInput(element: HTMLInputElement | null, fallback: number): number {
+export function parseNumberInput(element: HTMLInputElement | null, fallback: number): number {
     const value = Number.parseInt(element?.value ?? "", 10)
     return Number.isFinite(value) ? value : fallback
 }
 
-function getRandomInt(max: number): number {
+export function getRandomInt(max: number): number {
     const array = new Uint32Array(1)
     window.crypto.getRandomValues(array)
     return array[0] % max
 }
 
-function pickRandomChar(chars: string): string {
+export function pickRandomChar(chars: string): string {
     return chars[getRandomInt(chars.length)]
 }
 
-function shuffle<T>(items: T[]): T[] {
+export function shuffle<T>(items: T[]): T[] {
     const shuffled = [...items]
 
     for (let index = shuffled.length - 1; index > 0; index--) {
@@ -39,15 +39,15 @@ function shuffle<T>(items: T[]): T[] {
     return shuffled
 }
 
-function countMatches(value: string, chars: string): number {
+export function countMatches(value: string, chars: string): number {
     return Array.from(value).reduce((count, character) => count + (chars.includes(character) ? 1 : 0), 0)
 }
 
-function isPasswordValid(password: string, pools: CharsetPool[]): boolean {
+export function isPasswordValid(password: string, pools: CharsetPool[]): boolean {
     return pools.every((pool) => !pool.enabled || countMatches(password, pool.chars) >= pool.min)
 }
 
-function syncMinimumFields(): void {
+export function syncMinimumFields(): void {
     const useNum = document.getElementById("useNum") as HTMLInputElement | null
     const useSpecial = document.getElementById("useSpecial") as HTMLInputElement | null
     const minNum = document.getElementById("minNum") as HTMLInputElement | null
@@ -62,7 +62,7 @@ function syncMinimumFields(): void {
     }
 }
 
-function makePassword(): void {
+export function makePassword(): void {
     const lengthInput = document.getElementById("length") as HTMLInputElement
     const displayInput = document.getElementById("generatedPassword") as HTMLInputElement
 
@@ -125,7 +125,7 @@ function makePassword(): void {
     updateDisplay(displayInput, "Unable to validate password")
 }
 
-const updateDisplay = (display: HTMLInputElement, value: string) => {
+export const updateDisplay = (display: HTMLInputElement, value: string) => {
     display.value = value
 }
 
